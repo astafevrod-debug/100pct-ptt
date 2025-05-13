@@ -82,6 +82,11 @@ helped to:
 1. [Flash the NRF softdevice](https://github.com/sandeepmistry/arduino-nRF5#flashing-a-softdevice) from the Arduino IDE.
 1. Program it from PlatformIO as normal(see [TODOs](#todos)).
 
+#### Running OpenOCD directly
+
+```sh
+openocd -d0 -f interface/stlink.cfg -c "transport select hla_swd; set WORKAREASIZE 0x4000;"  -f target/nrf51.cfg -c "init; halt; nrf51 mass_erase; program .pio/build/seeedTinyBLE/firmware.hex verify; program /home/olegr/Downloads/s130/s130_nrf51_2.0.1_softdevice.hex verify reset exit"
+```
 
 ### Flashing case
 
